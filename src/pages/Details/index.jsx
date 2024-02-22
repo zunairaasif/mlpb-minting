@@ -69,7 +69,7 @@ const Details = () => {
         </label>
       </div>
 
-      <div className="flex gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
         {isChecked &&
           redemption.map((data) => (
             <div key={data.id}>
