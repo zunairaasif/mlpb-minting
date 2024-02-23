@@ -193,7 +193,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 mt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-10 mt-10">
           {filteredUsers.map((data) => (
             <div key={data.id} className="mb-4">
               <div className="bg-[#1A0C0E] p-2">
@@ -272,7 +272,7 @@ const HomePage = () => {
               ))}
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-14 mt-10 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-14 mt-10 justify-center">
           {artwork.map((data) => (
             <div
               key={data.id}

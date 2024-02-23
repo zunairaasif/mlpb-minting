@@ -52,7 +52,7 @@ const Template = () => {
           ))}
         </div>
 
-        <div className="flex gap-10 px-6 items-end sm:mt-0 mt-20 sm:h-screen">
+        <div className="flex gap-10 px-6 items-end h-screen">
           <button
             onClick={() => navigate("/")}
             className="underline mb-2 text-sm"
@@ -61,7 +61,7 @@ const Template = () => {
           </button>
           <button
             // disabled={click === null}
-            onClick={() => navigate("/asset")}
+            onClick={() => navigate("/create-nft")}
             className="py-2 w-64 text-center text-sm bg-[#FD102C] cursor-pointer"
             // className={`py-2 w-64 text-center text-sm ${
             //   click === null

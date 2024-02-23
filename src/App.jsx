@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/template" element={<Template />} />
-        <Route path="/asset" element={<CreateNFT />} />
+        <Route path="/create-nft" element={<CreateNFT />} />
       </Routes>
     </Router>
   );

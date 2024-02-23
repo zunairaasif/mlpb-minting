@@ -45,7 +45,7 @@ const CreateNFT = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2">
       <UploadNFT />
 
-      <div className="bg-[#1E1B18] p-6 h-screen flex flex-col">
+      <div className="bg-[#1E1B18] p-6 min-h-screen flex flex-col">
         <button className="self-end">
           <img src={close} alt="close" width={15} />
         </button>
@@ -67,17 +67,19 @@ const CreateNFT = () => {
           ))}
         </div>
 
-        {click === 0 ? (
-          <Asset />
-        ) : click === 1 ? (
-          <Details />
-        ) : click === 2 ? (
-          <Checkout />
-        ) : (
-          <Launch />
-        )}
+        <div className="flex-grow">
+          {click === 0 ? (
+            <Asset />
+          ) : click === 1 ? (
+            <Details />
+          ) : click === 2 ? (
+            <Checkout />
+          ) : (
+            <Launch />
+          )}
+        </div>
 
-        <div className="flex gap-10 self-center sm:mt-0 mt-20 sm:h-screen items-end">
+        <div className="flex gap-10 self-center items-end">
           <button onClick={handleBack} className="underline mb-2 text-sm">
             Back
           </button>

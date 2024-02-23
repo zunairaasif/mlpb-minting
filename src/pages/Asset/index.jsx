@@ -14,8 +14,8 @@ const Asset = () => {
         <input type="text" className="bg-black px-2 py-1" />
       </div>
 
-      <div className="flex gap-7">
-        <div className="flex flex-col w-full">
+      <div className="flex gap-2 sm:gap-7">
+        <div className="flex flex-col sm:w-full">
           <label>Collection Title</label>
           <input type="text" className="bg-black py-1 px-2" />
         </div>
