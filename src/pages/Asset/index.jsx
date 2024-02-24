@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import close from "../../assets/vector.png";
 
 const Asset = ({
   nftName,
@@ -16,6 +17,20 @@ const Asset = ({
   time,
   setTime,
 }) => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [input1, setInput1] = useState("");
+  const [input2, setInput2] = useState("");
+
+  const handleButtonClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleConfirm = () => {
+    console.log("Input 1:", input1);
+    console.log("Input 2:", input2);
+    setShowPopup(false);
+  };
+
   return (
     <div className="flex flex-col gap-3 text-sm">
       <div className="flex flex-col">
@@ -31,6 +46,7 @@ const Asset = ({
       <div className="flex gap-2 sm:gap-7">
         <div className="flex flex-col sm:w-full">
           <label>Collection Title</label>
+
           <input
             type="text"
             className="bg-black py-1 px-2"
@@ -50,9 +66,59 @@ const Asset = ({
         </div>
       </div>
 
-      <button className="p-2 w-24 text-xs self-end rounded-3xl items-center bg-[#FD102C]">
+      <button
+        onClick={handleButtonClick}
+        className="p-2 w-24 text-xs self-end rounded-3xl items-center bg-[#FD102C]"
+      >
         Add
       </button>
+
+      {showPopup && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+          <div className="bg-[#1E1B18] p-8 shadow-lg flex flex-col">
+            <div className="flex justify-between">
+              <p className="text-xl font-semibold mb-4">Collection Title</p>
+              <img
+                src={close}
+                alt="cancel"
+                className="h-4"
+                onClick={() => setShowPopup(false)}
+              />
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex flex-col">
+                <p>Title</p>
+                <input
+                  type="text"
+                  placeholder="Set collection title"
+                  value={input1}
+                  onChange={(e) => setInput1(e.target.value)}
+                  className="bg-[#000000] px-3 py-2 mb-4"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <p>Collection ID</p>
+                <input
+                  type="text"
+                  placeholder="set ID"
+                  value={input2}
+                  onChange={(e) => setInput2(e.target.value)}
+                  className="bg-[#000000] px-3 py-2 mb-4"
+                />
+              </div>
+            </div>
+
+            <button
+              onClick={handleConfirm}
+              className="py-2 px-4 bg-[#FD102C] mr-2 self-center"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-col">
         <label>Description</label>
