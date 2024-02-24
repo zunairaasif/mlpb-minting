@@ -14,13 +14,15 @@ const royalties = [
   { id: 1, name: "Momental", percentage: "5%", img: momental },
 ];
 
-const Details = () => {
+const Details = ({
+  listingPrice,
+  setListingPrice,
+  supply,
+  setSupply,
+  isChecked,
+  setIsChecked,
+}) => {
   const [edit, setEdit] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
-
-  const toggleChecked = () => {
-    setIsChecked(!isChecked);
-  };
 
   return (
     <div className="flex flex-col gap-3 text-sm">
@@ -30,13 +32,23 @@ const Details = () => {
 
           <div className="flex items-center">
             <p className="absolute pl-2 text-[#3D00B7]">$</p>
-            <input type="text" className="bg-black py-1 px-2 w-full pl-6" />
+            <input
+              type="text"
+              className="bg-black py-1 px-2 w-full pl-6"
+              value={listingPrice}
+              onChange={(e) => setListingPrice(e.target.value)}
+            />
           </div>
         </div>
 
         <div className="flex flex-col w-full">
           <label>Supply</label>
-          <input type="text" className="bg-black py-1 px-2" />
+          <input
+            type="text"
+            className="bg-black py-1 px-2"
+            value={supply}
+            onChange={(e) => setSupply(e.target.value)}
+          />
         </div>
       </div>
 
@@ -58,7 +70,7 @@ const Details = () => {
               id="toggle"
               className="sr-only"
               checked={isChecked}
-              onChange={toggleChecked}
+              onChange={() => setIsChecked(!isChecked)}
             />
             <div
               className={`absolute left-0 top-0 w-4 h-4 rounded-full bg-white transform transition-all duration-300 ease-in-out ${

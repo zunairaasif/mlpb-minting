@@ -60,14 +60,13 @@ const Template = () => {
             Back
           </button>
           <button
-            // disabled={click === null}
+            disabled={click === null}
             onClick={() => navigate("/create-nft")}
-            className="py-2 w-64 text-center text-sm bg-[#FD102C] cursor-pointer"
-            // className={`py-2 w-64 text-center text-sm ${
-            //   click === null
-            //     ? "bg-gray-400 cursor-not-allowed"
-            //     : "bg-[#FD102C] cursor-pointer"
-            // }`}
+            className={`py-2 w-64 text-center text-sm ${
+              click === null
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-[#FD102C] cursor-pointer"
+            }`}
           >
             Next
           </button>

@@ -17,10 +17,20 @@ const steps = [
 
 const CreateNFT = () => {
   const navigate = useNavigate();
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [click, setClick] = useState(0);
+  const [supply, setSupply] = useState("");
+  const [nftName, setNftName] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [description, setDescription] = useState("");
+  const [collectionId, setCollectionId] = useState("");
+  const [listingPrice, setListingPrice] = useState("");
+  const [collectionTitle, setCollectionTitle] = useState("");
 
   const handleNext = () => {
-    if (click === 0) {
+    if (click === 0 && setNftName) {
       setClick(1);
     } else if (click === 1) {
       setClick(2);
@@ -69,9 +79,31 @@ const CreateNFT = () => {
 
         <div className="flex-grow">
           {click === 0 ? (
-            <Asset />
+            <Asset
+              nftName={nftName}
+              setNftName={setNftName}
+              collectionTitle={collectionTitle}
+              setCollectionTitle={setCollectionTitle}
+              collectionId={collectionId}
+              setCollectionId={setCollectionId}
+              description={description}
+              setDescription={setDescription}
+              toggle={toggle}
+              setToggle={setToggle}
+              date={date}
+              setDate={setDate}
+              time={time}
+              setTime={setTime}
+            />
           ) : click === 1 ? (
-            <Details />
+            <Details
+              listingPrice={listingPrice}
+              setListingPrice={setListingPrice}
+              supply={supply}
+              setSupply={setSupply}
+              isChecked={isChecked}
+              setIsChecked={setIsChecked}
+            />
           ) : click === 2 ? (
             <Checkout />
           ) : (
@@ -85,8 +117,27 @@ const CreateNFT = () => {
           </button>
 
           <button
+            disabled={
+              (click === 0 &&
+                (!nftName ||
+                  !collectionTitle ||
+                  !collectionId ||
+                  !description ||
+                  (toggle && (!date || !time)))) ||
+              (click === 1 && (!listingPrice || !supply))
+            }
             onClick={handleNext}
-            className="py-2 w-64 text-center text-sm bg-[#FD102C] cursor-pointer"
+            className={`py-2 w-64 text-center text-sm ${
+              (click === 0 &&
+                (!nftName ||
+                  !collectionTitle ||
+                  !collectionId ||
+                  !description ||
+                  (toggle && (!date || !time)))) ||
+              (click === 1 && (!listingPrice || !supply))
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-[#FD102C] cursor-pointer"
+            }`}
           >
             {click === 3 ? <p>Create Collectible</p> : <p>Next</p>}
           </button>
